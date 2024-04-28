@@ -4,7 +4,7 @@
 
 Браузерное расширение которое раскрашивает логи в Хьюстоне и LogSearchApi с помощью регулярных выражений.
 
-<a href="![example.com](https://staff.skbkontur.ru/api/images/ffxke5pn/houston-logs-highlighter.png)" target="_blank">Пример раскраски</a> (нужен доступ в  Стафф)
+<a href="https://staff.skbkontur.ru/api/images/ffxke5pn/houston-logs-highlighter.png" target="_blank">Пример раскраски</a> (нужен доступ в  Стафф)
 
 Работает только для страниц
 - `https://houston.kontur.host/api/logs/*`
