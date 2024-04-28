@@ -47,7 +47,11 @@ function validateRegExpString (regExpString) {
     const flags = regExpString.slice(regExpString.lastIndexOf('/') + 1);
 
     if (!flags.includes('g')) {
-        return [false, 'RegExp have g flag'];
+        return [false, 'RegExp must have g flag'];
+    }
+
+    if (regExpString == '//g') {
+        return [false, 'Empty RegExp'];
     }
 
     let isValid = true;

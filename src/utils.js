@@ -72,6 +72,10 @@ export function validateRegExpString (regExpString) {
         return [false, 'RegExp must have g flag'];
     }
 
+    if (regExpString == '//g') {
+        return [false, 'Empty RegExp'];
+    }
+
     let isValid = true;
     let errorMessage = '';
 
