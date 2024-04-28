@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Houston log highlighter options</title>
+</head>
+<body>
+  <h1>Houston log highlighter options</h1>
+  <button id = "resetButton" style="margin-bottom: 40px;">Reset to default</button>
+  <form id="form">
+    <label for="name">Name</label>
+    <input type="text" required id="name">
+    
+    <label for="regex">Regular expression</label>
+    <input type="text" required id="regex" value="//g">
+
+    <label for="color">Color</label>
+    <input type="color" id="color" value="#04FF00">
+
+    <input type="submit" value="Add">
+  </form>
+
+  <div id="list"></div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
