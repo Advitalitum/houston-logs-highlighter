@@ -93,7 +93,7 @@ function colorizeMatches() {
         const options = optionsFromStorage || defaultOptions;
 
         const preTag = document.getElementsByTagName('pre')[0];
-        let currentPreHtml = preTag.innerText;
+        const lines = preTag.innerText.split(/\n/);
         let index = 0;
         let styleText = '';
         for (var highlightName in options) {
@@ -102,15 +102,18 @@ function colorizeMatches() {
             const color = highlightData[1];
             const tagName = `c-${index}`;
             styleText += `${tagName} { color:${color}; } `;
-            currentPreHtml = currentPreHtml.replaceAll(regEx, (match, p1, offset) => `<${tagName}>${match}</${tagName}>`);
+            for (let i = 0; i < lines.length; i++) {
+                lines[i] = lines[i].replaceAll(regEx, (match, p1, offset) => `<${tagName}>${match}</${tagName}>`);
+            }
+            
             index++;
         }
 
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(styleText);
-        document.adoptedStyleSheets = [sheetObj];
+        document.adoptedStyleSheets = [sheet];
         
-        preTag.innerHTML = currentPreHtml;
+        preTag.innerHTML = lines.join('\n');
     };
 }
 
