@@ -94,15 +94,22 @@ function colorizeMatches() {
 
         const preTag = document.getElementsByTagName('pre')[0];
         let currentPreHtml = preTag.innerText;
-
+        let index = 0;
+        let styleText = '';
         for (var highlightName in options) {
             const highlightData = options[highlightName];
             const regEx = highlightData[0];
             const color = highlightData[1];
-
-            currentPreHtml = currentPreHtml.replaceAll(regEx, (match, p1, offset) => `<span style="color:${color};">${match}</span>`);
+            const tagName = `c-${index}`;
+            styleText += `${tagName} { color:${color}; } `;
+            currentPreHtml = currentPreHtml.replaceAll(regEx, (match, p1, offset) => `<${tagName}>${match}</${tagName}>`);
+            index++;
         }
 
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(styleText);
+        document.adoptedStyleSheets = [sheetObj];
+        
         preTag.innerHTML = currentPreHtml;
     };
 }
