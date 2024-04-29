@@ -16,25 +16,25 @@ export const defaultOptions = {
     "at_skbkontur": [/at\sSKBKontur\.[^\(]*\(/gm, "#5FB979"]
 };
 
-export async function getOptionsFromStorage ()  {
-const obj = await storage.get();
+export async function getOptionsFromStorage() {
+    const obj = await storage.get();
     return obj[storageKey];
 }
 
-export async function saveOptionsToStorage (options) {
+export async function saveOptionsToStorage(options) {
     const obj = {};
     obj[storageKey] = options;
 
     await storage.set(obj);
 };
 
-export function stringToRegex (regExpString) {
+export function stringToRegex(regExpString) {
     const pattern = regExpString.slice(1, regExpString.lastIndexOf('/'));
     const flags = regExpString.slice(regExpString.lastIndexOf('/') + 1);
     return new RegExp(pattern, flags);
 };
 
-export function getFixedRegExp (regExpString) {
+export function getFixedRegExp(regExpString) {
     let result = regExpString;
     // if (!regExpString || !(typeof regExpString === 'string' || regExpString instanceof String)) {
     //     return '//g';
@@ -56,7 +56,7 @@ export function getFixedRegExp (regExpString) {
     return result;
 };
 
-export function validateRegExpString (regExpString) {
+export function validateRegExpString(regExpString) {
     if (!regExpString || !(typeof regExpString === 'string' || regExpString instanceof String)) {
         return [false, 'Input value is not string'];
     }

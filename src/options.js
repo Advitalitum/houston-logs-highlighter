@@ -104,7 +104,7 @@ function addToList(optionName, regExp, color) {
     regExpInput.setCustomValidity(errorMessage);
     regExpInput.oninput = async () => {
         regExpInput.value = utils.getFixedRegExp(regExpInput.value);
-        const [isValid, errorMessage] = utils.validateRegExpString(regExpInput.value);        
+        const [isValid, errorMessage] = utils.validateRegExpString(regExpInput.value);
         setRegExpLabelTextAndColor(isValid);
         regExpInput.setCustomValidity(errorMessage);
         regExpInput.reportValidity();
