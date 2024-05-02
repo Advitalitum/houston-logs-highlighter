@@ -12,8 +12,11 @@ export const defaultOptions = {
     "timestamp": [/\s*\d{4}\-\d{2}\-\d{2}\s\d{2}\:\d{2}\:\d{2}\,\d{3}/gm, "#7bb9b9"],
     "trace-id": [/\[T\-[^\]]*\]/gm, "#407fbf"],
     "warn": [/\s(WARN)\s/gm, "#FFFF00"],
-    "line": [/\:line\s\d+\s/gm, "#006EFF"],
-    "at_skbkontur": [/at\sSKBKontur\.[^\(]*\(/gm, "#5FB979"]
+    "line": [/\w+\.cs\:line\s\d+/gm, "#006EFF"],
+    "at_skbkontur": [/at\sSKBKontur.*/gm, "#5FB979"],
+    "200": [/200\s\(\'Ok\'\)/gm, "#04FF00"],
+    "500": [/500\s\(\'InternalServerError\'\)/gm, "#FF0000"],
+    "400": [/400\s\(\'BadRequest\'\)/gm, "#FFFF00"],
 };
 
 export async function getOptionsFromStorage() {
