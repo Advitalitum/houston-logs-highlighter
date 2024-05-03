@@ -17,6 +17,8 @@ const defaultOptions = {
     "200": [/200\s\(\'Ok\'\)/gm, "#04FF00"],
     "500": [/500\s\(\'InternalServerError\'\)/gm, "#FF0000"],
     "400": [/400\s\(\'BadRequest\'\)/gm, "#FFFF00"],
+    "sending_request" : [/Sending request.*$/gm, "#4E94B7"],
+    "request_result" : [/Result: replica.*$/gm, "#3DBDAE"],
 };
 
 async function getOptionsFromStorage() {
