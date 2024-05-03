@@ -72,7 +72,7 @@ function validateRegExpString(regExpString) {
 }
 
 async function getOnlyValidOptionsFromStorage() {
-    const optionsFromStorage = await getOptionsFromStorage();
+    const optionsFromStorage = await getOptionsFromStorage() ?? {};
     const validOptions = {};
     Object.keys(optionsFromStorage).forEach(function (key, index) {
         const current = optionsFromStorage[key];
@@ -95,7 +95,7 @@ chrome.storage.onChanged.addListener(async (changes, namespace) => { await getOn
 
 function colorizeMatches() {
     return optionsFromStorage => {
-        const options = optionsFromStorage || defaultOptions;
+        const options = (Object.keys(optionsFromStorage).length != 0) ? optionsFromStorage : defaultOptions;
 
         const preTag = document.getElementsByTagName('pre')[0];
         const lines = preTag.innerText.split(/\n/);
