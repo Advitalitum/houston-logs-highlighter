@@ -1,9 +1,13 @@
 {
   "manifest_version": 3,
-  "version": "0.0.0.1",
+  "version": "0.0.0.3",
   "name": "Houston logs highlighter",
   "description": "Highlights Houston logs",
   "permissions": ["storage"],
+  "icons": {
+    "48": "icon48.png",
+    "16": "icon.png"
+  },
   "content_scripts": [
     {
       "matches": [
