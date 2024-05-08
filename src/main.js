@@ -6,6 +6,7 @@ const defaultOptions = {
     "connection_info": [/\[ConnectionId[^\]]*\]/gm, slightlyVisibleColor],
     "debug": [/\s(DEBUG)\s/gm, "#808080"],
     "error": [/\s(ERROR|FATAL)\s/gm, "#FF0000"],
+    "exception": [/(\w|\.)*Exception\:/g, "#FF0000"],
     "instance_info": [/^\[[^\]]*\]/gm, "#808080"],
     "request_id": [/RequestId:[^\]]+/gm, slightlyVisibleColor],
     "request_path": [/\[RequestPath:[^\]]*\]/gm, "#7C4493"],
