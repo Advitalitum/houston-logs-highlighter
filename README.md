@@ -13,7 +13,7 @@
 
 ## Установка
 
-1. Скачать [src.zip](https://github.com/Advitalitum/houston-logs-highlighter/releases/download/v0.0.0.1/src.7z) или репозиторий себе на компьютер
+1. Скачать [src.zip](https://github.com/Advitalitum/houston-logs-highlighter/releases/download/v0.0.0.3/src.7z) или репозиторий себе на компьютер
 2. Распаковать архив если качали src.zip
 3. Зайти в расширения браузера
 4. Включить режим разработчика
