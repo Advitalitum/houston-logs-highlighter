@@ -13,13 +13,7 @@
 
 ## Установка
 
-1. Скачать [src.zip](https://github.com/Advitalitum/houston-logs-highlighter/releases/download/v0.0.0.3/src.7z) или репозиторий себе на компьютер
-2. Распаковать архив если качали src.zip
-3. Зайти в расширения браузера
-4. Включить режим разработчика
-5. Нажать "Загрузить распакованное расширение" и выбрать папку (src) внутри которой лежит файл manifest.json и другие файлы
-6. Выключить режим разработчика если хочется
-7. Вы великолепны
+Из [магазина chrome](https://chromewebstore.google.com/detail/houston-logs-highlighter/ckcnbpgkdhgimbnoogimfcjemdgaipgh)
    
 ## Настройка
 
