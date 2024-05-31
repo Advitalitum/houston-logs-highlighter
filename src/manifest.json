@@ -13,7 +13,9 @@
       "matches": [
         "https://houston.kontur.host/api/logs/*",
         "https://api.kontur.ru/logsearchapi/*out=plain*",
-        "https://api.testkontur.ru/logsearchapi/*out=plain*"
+        "https://api.testkontur.ru/logsearchapi/*out=plain*",
+        "https://mon.kontur.ru/contrails/api/logs*",
+        "https://mon.testkontur.ru/contrails/api/logs*"
       ],
       "all_frames":true,
       "js": [
