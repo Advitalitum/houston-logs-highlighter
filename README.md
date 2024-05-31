@@ -6,11 +6,6 @@
 
 <a href="https://staff.skbkontur.ru/api/images/uurcynp7/houston-logs-highlighter.png" target="_blank">Пример раскраски</a> (нужен доступ в  Стафф)
 
-Работает только для страниц
-- `https://houston.kontur.host/api/logs/*`
-- `https://api.kontur.ru/logsearchapi/*out=plain*`
-- `https://api.testkontur.ru/logsearchapi/*out=plain*`
-
 ## Установка
 
 Из [магазина chrome](https://chromewebstore.google.com/detail/houston-logs-highlighter/ckcnbpgkdhgimbnoogimfcjemdgaipgh)
