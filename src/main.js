@@ -92,14 +92,38 @@ async function getOnlyValidOptionsFromStorage() {
 
 getOnlyValidOptionsFromStorage().then(colorizeMatches());
 
+const config = { attributes: true, childList: true, subtree: true };
+const observer = new MutationObserver(function () {
+    const tagThatContainsLogs = findElementThatContainsLogs();
+    if (logsAreNotLoaded(tagThatContainsLogs)) {
+        return;   
+    }
+    getOnlyValidOptionsFromStorage().then(colorizeMatches());
+    observer.disconnect();
+  });
+
 chrome.storage.onChanged.addListener(async (changes, namespace) => { await getOnlyValidOptionsFromStorage().then(colorizeMatches()); });
+observer.observe(document.getRootNode(), config);
+
+function findElementThatContainsLogs() {
+    return document.getElementsByTagName('pre')[0] || document.getElementById('content')?.childNodes[0]?.childNodes[0];
+}
+
+function logsAreNotLoaded(tagThatContainsLogs) {
+    return !tagThatContainsLogs || !tagThatContainsLogs.textContent || tagThatContainsLogs.textContent == "Loading";
+}
 
 function colorizeMatches() {
     return optionsFromStorage => {
         const options = (Object.keys(optionsFromStorage).length != 0) ? optionsFromStorage : defaultOptions;
 
-        const preTag = document.getElementsByTagName('pre')[0];
-        const lines = preTag.innerText.split(/\n/);
+        const tagThatContainsLogs = findElementThatContainsLogs();
+        if (logsAreNotLoaded(tagThatContainsLogs)) {
+            console.log('Not found tag with logs text');
+            return;
+        }
+
+        const lines = tagThatContainsLogs.innerText.split(/\n/);
         let index = 0;
         let styleText = '';
         for (var highlightName in options) {
@@ -119,7 +143,7 @@ function colorizeMatches() {
         sheet.replaceSync(styleText);
         document.adoptedStyleSheets = [sheet];
         
-        preTag.innerHTML = lines.join('\n');
+        tagThatContainsLogs.innerHTML = lines.join('\n');
     };
 }
 

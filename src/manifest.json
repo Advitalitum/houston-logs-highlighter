@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "version": "0.0.0.5",
+  "version": "0.0.0.6",
   "name": "Houston logs highlighter",
   "description": "Highlights Houston logs",
-  "permissions": ["storage"],
+  "permissions": ["storage", "activeTab"],
   "icons": {
     "48": "icon48.png",
     "16": "icon.png"
@@ -17,6 +17,16 @@
         "https://mon.kontur.ru/contrails/api/logs*",
         "https://mon.testkontur.ru/contrails/api/logs*"
       ],
+      "all_frames":true,
+      "js": [
+        "main.js"       
+      ]
+    },
+    {
+      "matches": [
+        "https://mon.kontur.ru/dutymon/*"
+      ],
+      "include_globs": ["https://mon.kontur.ru/dutymon/*/logs*traceId=*"],
       "all_frames":true,
       "js": [
         "main.js"       
