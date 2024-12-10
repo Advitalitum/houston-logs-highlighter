@@ -3,7 +3,7 @@
   "version": "0.0.0.6",
   "name": "Houston logs highlighter",
   "description": "Highlights Houston logs",
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage"],
   "icons": {
     "48": "icon48.png",
     "16": "icon.png"
@@ -15,7 +15,8 @@
         "https://api.kontur.ru/logsearchapi/*out=plain*",
         "https://api.testkontur.ru/logsearchapi/*out=plain*",
         "https://mon.kontur.ru/contrails/api/logs*",
-        "https://mon.testkontur.ru/contrails/api/logs*"
+        "https://mon.testkontur.ru/contrails/api/logs*",
+        "https://mon.kontur.ru/dutymon/Logs/Search*"
       ],
       "all_frames":true,
       "js": [
