@@ -2,6 +2,9 @@ const slightlyVisibleColor = '#404040';
 const storage = chrome.storage && (chrome.storage.sync || chrome.storage.local);
 const storageKey = "houston_highlighter_options";
 
+const isTestKontur = window.location.hostname && window.location.hostname.includes(`.testkontur.ru`);
+const monKonturUrl = isTestKontur ? `https://mon.testkontur.ru/contrails/` : `https://mon.kontur.ru/contrails/`;
+
 const defaultOptions = {
     "connection_info": [/\[ConnectionId[^\]]*\]/gm, slightlyVisibleColor],
     "debug": [/\s(DEBUG)\s/gm, "#808080"],
@@ -113,13 +116,23 @@ function logsAreNotLoaded(tagThatContainsLogs) {
     return !tagThatContainsLogs || !tagThatContainsLogs.textContent || tagThatContainsLogs.textContent == "Loading";
 }
 
+function extractTraceId(match) {
+    return match.substring(3, 35);
+}
+
+function addContrailsUrl(lines) {
+    const traceRegEx = /\[T\-[^\]]*\]/gm;
+    for (let i = 0; i < lines.length; i++) {
+        lines[i] = lines[i].replaceAll(traceRegEx, (match, p1, offset) => `${match}<a href="${monKonturUrl}${extractTraceId(match)}" target="_blank"/>⇗</a>`);
+    }
+}
+
 function colorizeMatches() {
     return optionsFromStorage => {
         const options = (Object.keys(optionsFromStorage).length != 0) ? optionsFromStorage : defaultOptions;
 
         const tagThatContainsLogs = findElementThatContainsLogs();
         if (logsAreNotLoaded(tagThatContainsLogs)) {
-            console.log('Not found tag with logs text');
             return;
         }
 
@@ -134,10 +147,12 @@ function colorizeMatches() {
             styleText += `${tagName} { color:${color}; } `;
             for (let i = 0; i < lines.length; i++) {
                 lines[i] = lines[i].replaceAll(regEx, (match, p1, offset) => `<${tagName}>${match}</${tagName}>`);
-            }
+            }            
             
             index++;
         }
+
+        addContrailsUrl(lines);
 
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(styleText);
@@ -146,4 +161,6 @@ function colorizeMatches() {
         tagThatContainsLogs.innerHTML = lines.join('\n');
     };
 }
+
+
 
