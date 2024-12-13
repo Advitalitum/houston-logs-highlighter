@@ -4,6 +4,7 @@ const storageKey = "houston_highlighter_options";
 
 const isTestKontur = window.location.hostname && window.location.hostname.includes(`.testkontur.ru`);
 const monKonturUrl = isTestKontur ? `https://mon.testkontur.ru/contrails/` : `https://mon.kontur.ru/contrails/`;
+const traceRegEx = /\[T\-[^\]]*\]/gm;
 
 const defaultOptions = {
     "connection_info": [/\[ConnectionId[^\]]*\]/gm, slightlyVisibleColor],
@@ -121,7 +122,7 @@ function extractTraceId(match) {
 }
 
 function addContrailsUrl(lines) {
-    const traceRegEx = /\[T\-[^\]]*\]/gm;
+    
     for (let i = 0; i < lines.length; i++) {
         lines[i] = lines[i].replaceAll(traceRegEx, (match, p1, offset) => `${match}<a href="${monKonturUrl}${extractTraceId(match)}" target="_blank"/>⇗</a>`);
     }
