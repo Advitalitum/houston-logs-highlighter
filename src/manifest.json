@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "0.0.0.8",
+  "version": "0.0.0.9",
   "name": "Houston logs highlighter",
   "description": "Highlights Houston logs",
   "permissions": ["storage"],
