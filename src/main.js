@@ -94,8 +94,6 @@ async function getOnlyValidOptionsFromStorage() {
     return validOptions;
 }
 
-getOnlyValidOptionsFromStorage().then(colorizeMatches());
-
 const config = { attributes: true, childList: true, subtree: true };
 const observer = new MutationObserver(function () {
     const tagThatContainsLogs = findElementThatContainsLogs();
@@ -121,8 +119,7 @@ function extractTraceId(match) {
     return match.substring(3, 35);
 }
 
-function addContrailsUrl(lines) {
-    
+function addContrailsUrl(lines) {    
     for (let i = 0; i < lines.length; i++) {
         lines[i] = lines[i].replaceAll(traceRegEx, (match, p1, offset) => `${match}<a href="${monKonturUrl}${extractTraceId(match)}" target="_blank"/>⇗</a>`);
     }
